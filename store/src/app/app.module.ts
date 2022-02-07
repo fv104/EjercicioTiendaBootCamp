@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { EmpleadosComponent } from './empleados/empleados.component';
 import { EstudiantesComponent } from './estudiantes/estudiantes.component';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +17,7 @@ import {HttpClientModule} from '@angular/common/http'
     HeaderComponent,
     EmpleadosComponent,
     EstudiantesComponent,
+    
     
   ],
   imports: [

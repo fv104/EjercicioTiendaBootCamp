@@ -21,5 +21,7 @@ export class ProductosComponent implements OnInit {
     )
     .subscribe()
   }
-
+  addToCart(product : Product) : void{
+    console.log("Add to cart",product)
+  }
 }
