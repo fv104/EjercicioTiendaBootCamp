@@ -8,11 +8,9 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 })
 export class HeaderComponent implements OnInit {
 
-  quantity$ = this.shoppingCartService.quantityAction$
-  total$ = this.shoppingCartService.totalAction$
-  cart$ = this.shoppingCartService.cartAction$
+  
 
-  constructor(private shoppingCartService : ShoppingCartService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

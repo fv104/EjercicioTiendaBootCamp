@@ -10,6 +10,7 @@ import { MaterialModule } from './material/material.module';
 import { EmpleadosComponent } from './empleados/empleados.component';
 import { EstudiantesComponent } from './estudiantes/estudiantes.component';
 import {HttpClientModule} from '@angular/common/http';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
     HeaderComponent,
     EmpleadosComponent,
     EstudiantesComponent,
+    CartComponent,
     
     
   ],
