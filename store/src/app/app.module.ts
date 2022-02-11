@@ -21,6 +21,7 @@ import { CartComponent } from './components/cart/cart.component';
     CartComponent,
     
     
+    
   ],
   imports: [
     BrowserModule,

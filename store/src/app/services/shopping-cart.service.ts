@@ -8,7 +8,7 @@ import { Product } from '../interfaces/product';
 export class ShoppingCartService {
 
   products : Product[] = []
-  
+  constructor() { }
   private cartSubject = new BehaviorSubject<Product[]>([])
   private totalSubject = new  BehaviorSubject<number>(0)
   private quantitySubject = new BehaviorSubject<number>(0)
@@ -27,7 +27,7 @@ export class ShoppingCartService {
 
   //Necesitamos unos metodos privados tambien para calcular el total de la orden que los clientes compran
   private calcTotal() : void{
-    const total = this.products.reduce((acumulador,productoActual) => acumulador += productoActual.price,0)
+    const total = this.products.reduce((acumulador,productoActual) => acumulador += (productoActual.price * productoActual.qty),0)
 
     //Notificar al observable
     this.totalSubject.next(total)
@@ -36,13 +36,27 @@ export class ShoppingCartService {
 
   //Para la cantidad de productos que el usuario ha añadido al carrito
   private quantityProducts(): void{
-    const quantity = this.products.length
+    //Para que en el detalle no salga el mismo producto repetido sino agrupado
+    //Comentamos lo que habiamos implementado inicialmente
+    // const quantity = this.products.length
 
+    const quantity = this.products.reduce((acc, prod) => acc += prod.qty,0)
     this.quantitySubject.next(quantity)
   }
   //Para añadir productos al carrito
   private addToCart(product: Product):void{
-    this.products.push(product)
+    // this.products.push(product)
+
+    //Ahora comprobamos si el producto ya esta en el carrito de la compra y solo aumentamos la cantidad(qty)
+    const isProductInCart  = this.products.find(({id}) => id == product.id)
+
+    if(isProductInCart){
+      isProductInCart.qty += 1
+    }else{
+
+      //Utilizando el spread Operator (...)
+      this.products.push({...product,qty : 1})
+    }
     this.cartSubject.next(this.products)
   }
 
@@ -52,5 +66,11 @@ export class ShoppingCartService {
     this.calcTotal()
     this.quantityProducts()
   }
-  constructor() { }
+  resetCart() : void{
+    this.cartSubject.next([])
+    this.totalSubject.next(0)
+    this.quantitySubject.next(0)
+    this.products = []
+  }
+  
 }

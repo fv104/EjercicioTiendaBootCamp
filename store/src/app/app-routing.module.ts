@@ -7,6 +7,8 @@ const routes: Routes = [
   {path: 'estudiantes',component : EstudiantesComponent},
   {path:'empleados',component : EmpleadosComponent},
   { path: 'productos', loadChildren: () => import('./components/productos/productos.module').then(m => m.ProductosModule) },
+  { path: 'checkout', loadChildren: () => import('./checkout/checkout.module').then(m => m.CheckoutModule) },
+  { path: 'thank-you-page', loadChildren: () => import('./thank-you-page/thank-you-page.module').then(m => m.ThankYouPageModule) },
   {path: '**', redirectTo: '',pathMatch : 'full'}
 ];
 

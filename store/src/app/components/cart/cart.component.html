@@ -1,7 +1,10 @@
-<ng-container *ngIf="{total : total$ | async, quantity : quantity$ | async} as dataCart">
-    <mat-icon>add_shopping_cart</mat-icon>
-    <ng-container *ngIf="dataCart.total">
-        {{dataCart.total | currency}} - Total
-        {{dataCart.quantity}} - Cantidad
+<ng-container *ngIf="{total : total$}">
+    <ng-container *ngIf="{total : total$ | async, quantity: quantity$ | async} as dataCart ">
+        <mat-icon>add_shopping_cart</mat-icon>
+        <ng-container *ngIf="dataCart.total">
+            {{ dataCart.total | currency }} - Total
+            {{ dataCart.quantity }} - Quantity
+        </ng-container>
     </ng-container>
+    
 </ng-container>
